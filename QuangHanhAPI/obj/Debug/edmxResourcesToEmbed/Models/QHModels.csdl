@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANGHANHABCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tenkhac" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+    <Property Name="CapUyHienTai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CapUyKiem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhuCapChucVu" Type="Double" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="NoiSinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DanToc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QueQuan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TonGiao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiOHienTai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TPGiaDinhXuatThan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayThamGiaCachMang" Type="DateTime" Precision="0" />
+    <Property Name="NgayVaoDangCSVN" Type="DateTime" Precision="0" />
+    <Property Name="NgayChinhThuc" Type="DateTime" Precision="0" />
+    <Property Name="NgayVaoToChucCTXH" Type="DateTime" Precision="0" />
+    <Property Name="ToChuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayNhapNgu" Type="DateTime" Precision="0" />
+    <Property Name="NgayXuatNgu" Type="DateTime" Precision="0" />
+    <Property Name="QuanHamChucVuCaoNhat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HocHamHocViCaoNhat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LyLuanChinhTri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgoaiNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CongTacChinhDangLam" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgachCongChuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaNgach" Type="Double" />
+    <Property Name="DanhHieuDuocPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoTruongCongTac" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CongViecDaLamLauNhat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KhenThuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KyLuat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTrangSucKhoe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChiTietSucKhoe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChieuCao" Type="Double" />
+    <Property Name="CanNang" Type="Double" />
+    <Property Name="NhomMau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HangThuongBinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaDinhChinhSach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoCMND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NgayCapCMND" Type="DateTime" Precision="0" />
+    <Property Name="NoiCapCMND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDiLam" Type="DateTime" Precision="0" />
+    <Property Name="MaUyQuyen" Type="Int32" />
+    <Property Name="SoBHXH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTraBHXH" Type="DateTime" Precision="0" />
+    <Property Name="MaCongViec" Type="Int32" />
+    <Property Name="MucLuong" Type="Double" />
+    <Property Name="MaTrinhDo" Type="Int32" />
+    <Property Name="MaTruong" Type="Int32" />
+    <Property Name="BacLuong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgheTruoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTuyenDungTruoc" Type="DateTime" Precision="0" />
+    <Property Name="CoQuanTruoc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HeSo" Type="Double" />
+    <Property Name="TuThang" Type="Int32" />
+    <Property Name="MaTrangThai" Type="Int32" Nullable="false" />
+    <Property Name="MaChuyenNganh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaPhongBan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="MaBacLuong_ThangLuong_MucLuong" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="QUANGHANHABCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+  </EntityContainer>
+</Schema>
