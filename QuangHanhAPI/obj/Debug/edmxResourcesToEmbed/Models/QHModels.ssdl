@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QUANGHANHABCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="department_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="department_type" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="isInside" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="NhanVien">
     <Key>
       <PropertyRef Name="MaNV" />
@@ -67,7 +76,24 @@
     <Property Name="MaPhongBan" Type="nvarchar" MaxLength="150" />
     <Property Name="MaBacLuong_ThangLuong_MucLuong" Type="int" />
   </EntityType>
+  <Association Name="FK__NhanVien__MaPhon__793DFFAF">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="department_id" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaPhongBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QUANGHANHABCModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__NhanVien__MaPhon__793DFFAF" Association="Self.FK__NhanVien__MaPhon__793DFFAF">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

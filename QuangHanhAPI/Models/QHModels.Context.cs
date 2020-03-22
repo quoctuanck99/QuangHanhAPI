@@ -26,5 +26,6 @@ namespace QuangHanhAPI.Models
         }
     
         public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
     }
 }
