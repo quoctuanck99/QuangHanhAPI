@@ -66,8 +66,36 @@
     <Property Name="MaChuyenNganh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="MaPhongBan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="MaBacLuong_ThangLuong_MucLuong" Type="Int32" />
+    <NavigationProperty Name="Department" Relationship="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF" FromRole="NhanVien" ToRole="Department" />
   </EntityType>
   <EntityContainer Name="QUANGHANHABCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="Departments" EntityType="QUANGHANHABCModel.Department" />
+    <AssociationSet Name="FK__NhanVien__MaPhon__793DFFAF" Association="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="department_name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="department_type" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="isInside" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NhanViens" Relationship="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF" FromRole="Department" ToRole="NhanVien" />
+  </EntityType>
+  <Association Name="FK__NhanVien__MaPhon__793DFFAF">
+    <End Type="QUANGHANHABCModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="QUANGHANHABCModel.NhanVien" Role="NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="department_id" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaPhongBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

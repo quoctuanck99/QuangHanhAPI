@@ -69,5 +69,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="QUANGHANHABCModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="isInside" ColumnName="isInside" />
+          <ScalarProperty Name="department_type" ColumnName="department_type" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

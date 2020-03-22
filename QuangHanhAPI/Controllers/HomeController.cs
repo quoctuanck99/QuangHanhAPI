@@ -12,7 +12,7 @@ namespace QuangHanhAPI.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return null;
+            return View();
         }
     }
 }

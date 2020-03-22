@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QUANGHANHABCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QUANGHANHABCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="department_name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="department_type" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="isInside" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NhanVien">
           <Key>
             <PropertyRef Name="MaNV" />
@@ -72,11 +81,27 @@
           <Property Name="MaPhongBan" Type="nvarchar" MaxLength="150" />
           <Property Name="MaBacLuong_ThangLuong_MucLuong" Type="int" />
         </EntityType>
+        <Association Name="FK__NhanVien__MaPhon__793DFFAF">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="QUANGHANHABCModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__NhanVien__MaPhon__793DFFAF" Association="Self.FK__NhanVien__MaPhon__793DFFAF">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QUANGHANHABCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -146,10 +171,38 @@
           <Property Name="MaChuyenNganh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MaPhongBan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="MaBacLuong_ThangLuong_MucLuong" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF" FromRole="NhanVien" ToRole="Department" />
         </EntityType>
         <EntityContainer Name="QUANGHANHABCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="Departments" EntityType="QUANGHANHABCModel.Department" />
+          <AssociationSet Name="FK__NhanVien__MaPhon__793DFFAF" Association="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="department_name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="department_type" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="isInside" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NhanViens" Relationship="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF" FromRole="Department" ToRole="NhanVien" />
+        </EntityType>
+        <Association Name="FK__NhanVien__MaPhon__793DFFAF">
+          <End Type="QUANGHANHABCModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="QUANGHANHABCModel.NhanVien" Role="NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -221,6 +274,16 @@
                 <ScalarProperty Name="MaChuyenNganh" ColumnName="MaChuyenNganh" />
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="MaBacLuong_ThangLuong_MucLuong" ColumnName="MaBacLuong_ThangLuong_MucLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="QUANGHANHABCModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="isInside" ColumnName="isInside" />
+                <ScalarProperty Name="department_type" ColumnName="department_type" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

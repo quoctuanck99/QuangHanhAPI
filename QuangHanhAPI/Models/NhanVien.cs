@@ -76,5 +76,7 @@ namespace QuangHanhAPI.Models
         public string MaChuyenNganh { get; set; }
         public string MaPhongBan { get; set; }
         public Nullable<int> MaBacLuong_ThangLuong_MucLuong { get; set; }
+    
+        public virtual Department Department { get; set; }
     }
 }

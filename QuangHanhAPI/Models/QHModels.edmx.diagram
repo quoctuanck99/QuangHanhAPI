@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a12bf5c2b12f40a7a9e5e14b740c5dd6" Name="Diagram1" ZoomLevel="53">
         <EntityTypeShape EntityType="QUANGHANHABCModel.NhanVien" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANGHANHABCModel.Department" Width="1.5" PointX="0.75" PointY="15.375" />
+        <AssociationConnector Association="QUANGHANHABCModel.FK__NhanVien__MaPhon__793DFFAF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
