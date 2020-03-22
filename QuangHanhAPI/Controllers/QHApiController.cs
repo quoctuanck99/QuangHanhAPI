@@ -29,18 +29,18 @@ namespace QuangHanhAPI.Controllers
                     var nhanvien = db.Database.SqlQuery<NhanVien>(sql).ToList<NhanVien>();
                     if (nhanvien == null||nhanvien.Count==0)
                     {
-                        return Ok(new { success = "true", message = "No records found!", results = new List<Employee>() });
+                        return Ok(new { success = true, message = "No records found!", results = new List<Employee>() });
                     }
-                    return Ok(new { success = "true", message = "Success!",results = nhanvien });
+                    return Ok(new { success = true, message = "Success!",results = nhanvien });
                 }
                 else
                 {
-                    return Ok(new { success = "false", message = "Invalid token!", results = new List<Employee>() });
+                    return Ok(new { success = false, message = "Invalid token!", results = new List<Employee>() });
                 }
             }
             catch (Exception e)
             {
-                return Ok(new { success = "false", message = "Please check the request data!", results = new List<Employee>() });
+                return Ok(new { success = false, message = "Please check the request data!", results = new List<Employee>() });
             }
         }
         [Route("api/employees")]
@@ -56,9 +56,9 @@ namespace QuangHanhAPI.Controllers
 
             if (nhanviens == null)
             {
-                return Ok(new { success = "false", message = "Error!", results = new List<Employee>()});
+                return Ok(new { success = false, message = "Error!", results = new List<Employee>()});
             }
-            return Ok(new { success = "true", message = "Success!", results = nhanviens});
+            return Ok(new { success = true, message = "Success!", results = nhanviens});
             //return Request.CreateResponse<string>(HttpStatusCode.OK,"");
         }
         public class requestData
